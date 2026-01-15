@@ -1,11 +1,16 @@
 import Contact from "../Contact/Contact";
 
-export default function ContactList({ contacts }) {
+export default function ContactList({ contacts, onDeleteContact }) {
   return (
     <ul>
-      {contacts.map((contact) => (
-        <li key={contact.id}>
-          <Contact name={contact.name} number={contact.number} />
+      {contacts.map(({ id, name, number }) => (
+        <li key={id}>
+          <Contact
+            id={id}
+            name={name}
+            number={number}
+            onDelete={onDeleteContact}
+          />
         </li>
       ))}
     </ul>
