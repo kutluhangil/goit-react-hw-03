@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { FaUser, FaPhone } from "react-icons/fa";
 import { nanoid } from "nanoid";
 import styles from "./ContactForm.module.css";
 
@@ -35,19 +36,25 @@ export default function ContactForm({ onAddContact }) {
       onSubmit={handleSubmit}
     >
       <Form className={styles.form}>
-        <label>
-          Name
-          <Field name="name" />
-          <ErrorMessage name="name" component="span" />
-        </label>
+        <div className={styles.fieldWrapper}>
+          <label htmlFor="name" className={styles.label}>Name</label>
+          <div className={styles.inputContainer}>
+            <span className={styles.icon}><FaUser /></span>
+            <Field name="name" id="name" className={styles.input} placeholder="Name" />
+          </div>
+          <ErrorMessage name="name" component="span" className={styles.error} />
+        </div>
 
-        <label>
-          Number
-          <Field name="number" />
-          <ErrorMessage name="number" component="span" />
-        </label>
+        <div className={styles.fieldWrapper}>
+          <label htmlFor="number" className={styles.label}>Number</label>
+          <div className={styles.inputContainer}>
+            <span className={styles.icon}><FaPhone /></span>
+            <Field name="number" id="number" className={styles.input} placeholder="Number" />
+          </div>
+          <ErrorMessage name="number" component="span" className={styles.error} />
+        </div>
 
-        <button type="submit">Add contact</button>
+        <button type="submit" className={styles.button}>Add contact</button>
       </Form>
     </Formik>
   );
